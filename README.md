@@ -3,7 +3,7 @@
 
 ## 改进
 
-Here's how you use `you-get` to download a video from [YouTube](https://www.youtube.com/watch?v=jNQXAC9IVRw):
+Here's how you use `you-get` to download a video from bilibili
 
 ```console
 $ you-get https://www.bilibili.com/video/BV1PJ411g7S9 -O myvide
@@ -20,7 +20,12 @@ stream:
 设定-O参数的情况下
 原始youget的repo，会将视频存储为myvide.mp4，但是弹幕cmt.xml文件，仍然按照title存储，这个例子里面title就会存成下面这样，导致视频名和弹幕文件不一致。
 ```
-【木鱼微剧场】18天拍摄，120万预算，却拍出了本世纪豆瓣评分最高的恐怖片《电锯惊魂》.cmt.xml
+视频名：myvideo.mp4
+弹幕文件名: 【木鱼微剧场】18天拍摄，120万预算，却拍出了本世纪豆瓣评分最高的恐怖片《电锯惊魂》.cmt.xml
 ```
 
-我的改进是指定-O的话，存储的，视频文件名和弹幕网文件名是一致的。 myvideo.mp4和myvideo.cmt.xml
+我的改进是指定-O的话，存储的视频文件名和弹幕网文件名是一致的。 如下
+```
+myvideo.mp4
+myvideo.cmt.xml
+```
