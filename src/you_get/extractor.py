@@ -260,6 +260,8 @@ class VideoExtractor():
                 filename = f'{filestem}.cmt.xml'
                 #filename = '{}.cmt.xml'.format(get_filename(self.title))
                 print('Downloading {} ...\n'.format(filename))
+
+                #raise ValueError(os.path.join(kwargs['output_dir'], filename))
                 with open(os.path.join(kwargs['output_dir'], filename), 'w', encoding='utf8') as fp:
                     fp.write(self.danmaku)
 

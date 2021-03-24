@@ -1686,58 +1686,59 @@ def script_main(download, download_playlist, **kwargs):
 
     socket.setdefaulttimeout(args.timeout)
 
-    try:
-        extra = {'args': args}
-        if extractor_proxy:
-            extra['extractor_proxy'] = extractor_proxy
-        if stream_id:
-            extra['stream_id'] = stream_id
-        download_main(
-            download, download_playlist,
-            URLs, args.playlist,
-            output_dir=args.output_dir, merge=not args.no_merge,
-            info_only=info_only, json_output=json_output, caption=caption,
-            password=args.password,
-            **extra
-        )
-    except KeyboardInterrupt:
-        if args.debug:
-            raise
-        else:
-            sys.exit(1)
-    except UnicodeEncodeError:
-        if args.debug:
-            raise
-        log.e(
-            '[error] oops, the current environment does not seem to support '
-            'Unicode.'
-        )
-        log.e('please set it to a UTF-8-aware locale first,')
-        log.e(
-            'so as to save the video (with some Unicode characters) correctly.'
-        )
-        log.e('you can do it like this:')
-        log.e('    (Windows)    % chcp 65001 ')
-        log.e('    (Linux)      $ LC_CTYPE=en_US.UTF-8')
-        sys.exit(1)
-    except Exception:
-        if not args.debug:
-            log.e('[error] oops, something went wrong.')
-            log.e(
-                'don\'t panic, c\'est la vie. please try the following steps:'
-            )
-            log.e('  (1) Rule out any network problem.')
-            log.e('  (2) Make sure you-get is up-to-date.')
-            log.e('  (3) Check if the issue is already known, on')
-            log.e('        https://github.com/soimort/you-get/wiki/Known-Bugs')
-            log.e('        https://github.com/soimort/you-get/issues')
-            log.e('  (4) Run the command with \'--debug\' option,')
-            log.e('      and report this issue with the full output.')
-        else:
-            print_version()
-            log.i(args)
-            raise
-        sys.exit(1)
+    #try:
+    extra = {'args': args}
+    if extractor_proxy:
+        extra['extractor_proxy'] = extractor_proxy
+    if stream_id:
+        extra['stream_id'] = stream_id
+    download_main(
+        download, download_playlist,
+        URLs, args.playlist,
+        output_dir=args.output_dir, merge=not args.no_merge,
+        info_only=info_only, json_output=json_output, caption=caption,
+        password=args.password,
+        **extra
+    )
+
+    # except KeyboardInterrupt:
+    #     if args.debug:
+    #         raise
+    #     else:
+    #         sys.exit(1)
+    # except UnicodeEncodeError:
+    #     if args.debug:
+    #         raise
+    #     log.e(
+    #         '[error] oops, the current environment does not seem to support '
+    #         'Unicode.'
+    #     )
+    #     log.e('please set it to a UTF-8-aware locale first,')
+    #     log.e(
+    #         'so as to save the video (with some Unicode characters) correctly.'
+    #     )
+    #     log.e('you can do it like this:')
+    #     log.e('    (Windows)    % chcp 65001 ')
+    #     log.e('    (Linux)      $ LC_CTYPE=en_US.UTF-8')
+    #     sys.exit(1)
+    # except Exception:
+    #     if not args.debug:
+    #         log.e('[error] oops, something went wrong.')
+    #         log.e(
+    #             'don\'t panic, c\'est la vie. please try the following steps:'
+    #         )
+    #         log.e('  (1) Rule out any network problem.')
+    #         log.e('  (2) Make sure you-get is up-to-date.')
+    #         log.e('  (3) Check if the issue is already known, on')
+    #         log.e('        https://github.com/soimort/you-get/wiki/Known-Bugs')
+    #         log.e('        https://github.com/soimort/you-get/issues')
+    #         log.e('  (4) Run the command with \'--debug\' option,')
+    #         log.e('      and report this issue with the full output.')
+    #     else:
+    #         print_version()
+    #         log.i(args)
+    #         raise
+    #     sys.exit(1)
 
 
 def google_search(url):
